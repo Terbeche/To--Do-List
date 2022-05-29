@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  background: #ddd;
+}
+
+.to-do-list {
+  background-color: white;
+  padding: 1rem;
+  margin: 2rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  background-color: white;
+}
+
+.task {
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+.task-completed {
+  margin-right: 1rem;
+}
+
+.task-description {
+  background-color: white;
+}
+
+#to-do-add {
+  color: #aaa;
+}
+
+#to-do-clear {
+  text-align: center;
+}
