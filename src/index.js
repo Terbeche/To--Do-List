@@ -33,27 +33,29 @@ toDoAdd.id = 'to-do-add';
 toDoAdd.placeholder = 'Add to your list';
 
 toDoListUl.appendChild(toDoAdd);
+const tasksGenerate = () => {
+  for (let i = 0; i < toDoList.length; i += 1) {
+    const toDoTask = document.createElement('li');
+    toDoTask.classList.add('task');
 
-for (let i = 0; i < toDoList.length; i += 1) {
-  const toDoTask = document.createElement('li');
-  toDoTask.classList.add('task');
+    const toDoTaskCompleted = document.createElement('input');
+    toDoTaskCompleted.type = 'checkbox';
+    toDoTaskCompleted.id = toDoList[i].index;
+    toDoTaskCompleted.classList.add('task-completed');
 
-  const toDoTaskCompleted = document.createElement('input');
-  toDoTaskCompleted.type = 'checkbox';
-  toDoTaskCompleted.id = toDoList[i].index;
-  toDoTaskCompleted.classList.add('task-completed');
+    const toDoTaskDescription = document.createElement('label');
+    toDoTaskDescription.for = toDoList[i].index;
+    toDoTaskDescription.innerHTML = toDoList[i].description;
+    toDoTaskDescription.classList.add('task-description');
 
-  const toDoTaskDescription = document.createElement('label');
-  toDoTaskDescription.for = toDoList[i].index;
-  toDoTaskDescription.innerHTML = toDoList[i].description;
-  toDoTaskDescription.classList.add('task-description');
+    toDoTask.appendChild(toDoTaskCompleted);
+    toDoTask.appendChild(toDoTaskDescription);
 
-  toDoTask.appendChild(toDoTaskCompleted);
-  toDoTask.appendChild(toDoTaskDescription);
+    toDoListUl.appendChild(toDoTask);
+  }
+};
 
-  toDoListUl.appendChild(toDoTask);
-}
-
+tasksGenerate();
 const toDoClear = document.createElement('li');
 toDoClear.innerHTML = 'Clear all completed';
 toDoClear.classList.add('task');
