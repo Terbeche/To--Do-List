@@ -1,6 +1,6 @@
 # To--Do-List
 
-> This is our microverse awesome books project on html + css+ modular javascript.
+> This is our microverse To Do List project on html + css+ modular javascript and webpack.
 
 ## Built With
 
@@ -8,6 +8,7 @@
 - CSS
 - Javascript
 - Linter
+- Webpack
 
 ## Link to project online
 - [Online Version](https://terbeche.github.io/Awesome-Books/)
@@ -24,8 +25,6 @@
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page]().
 
 ## Show your support
 
