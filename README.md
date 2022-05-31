@@ -11,7 +11,7 @@
 - Webpack
 
 ## Link to project online
-- [Online Version](https://terbeche.github.io/Awesome-Books/)
+- [Online Version](https://terbeche.github.io/To--Do-List/)
 
 
 ## Authors
