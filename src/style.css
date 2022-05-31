@@ -3,6 +3,10 @@
   background: #ddd;
 }
 
+input {
+  border: none;
+}
+
 #title {
   display: none;
 }
@@ -22,6 +26,11 @@ ul {
 .task {
   margin-bottom: 1rem;
   background-color: white;
+  display: flex;
+}
+
+.task-remove {
+  margin-left: auto;
 }
 
 .task-completed {
