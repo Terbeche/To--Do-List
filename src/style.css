@@ -33,6 +33,11 @@ ul {
   margin-left: auto;
 }
 
+.task-edit {
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
+
 .task-completed {
   margin-right: 1rem;
 }
@@ -42,7 +47,7 @@ ul {
 }
 
 #to-do-add {
-  color: #aaa;
+  color: #444;
 }
 
 #to-do-clear {
