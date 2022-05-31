@@ -68,17 +68,31 @@ class ToDoListTasks {
     taskRemove.classList.add('task-remove');
     taskRemove.innerText = 'Remove';
 
-
+    const taskEdit = document.createElement('button');
+    taskEdit.classList.add('task-edit');
+    taskEdit.innerText = 'Edit';
 
     taskRemove.onclick = function() {
       taskRemove.parentElement.remove();
       let myIndex;
       for (let i = 0; i < toDoList.length; i += 1) {
-        if (toDoList[i].innerHTML === description) {
+        if (toDoList[i].description === description) {
           myIndex = i;
         }
       }
       toDoList.splice(myIndex, 1);
+      localStorage.setItem('toDoList', JSON.stringify(toDoList));
+    };
+
+
+    taskEdit.onclick = function() {
+
+      let editIndex;
+      for (let i = 0; i < toDoList.length; i += 1) {
+        if (toDoList[i].description === description) {
+          editIndex = i;
+        }
+      }
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     };
 
@@ -96,6 +110,7 @@ class ToDoListTasks {
     // };
 
     toDoTask.appendChild(taskRemove);
+    toDoTask.appendChild(taskEdit);
 
     toDoListUl.appendChild(toDoTask);
 
