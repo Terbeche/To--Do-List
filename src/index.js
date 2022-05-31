@@ -28,7 +28,7 @@ const completed = false;
 
 class ToDoListTasks {
   addTask = (description) => {
-    myIndex = toDoList.length;
+    myIndex = toDoList.length + 1;
     toDoList.push({
       description,
       myIndex,
@@ -82,7 +82,7 @@ class ToDoListTasks {
       toDoList.splice(theIndex, 1);
 
       for (let j = 0; j < toDoList.length; j += 1) {
-        toDoList[j].myIndex = j;
+        toDoList[j].myIndex = j + 1;
       }
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     };
