@@ -3,6 +3,10 @@
   background: #ddd;
 }
 
+input {
+  border: none;
+}
+
 #title {
   display: none;
 }
@@ -22,6 +26,16 @@ ul {
 .task {
   margin-bottom: 1rem;
   background-color: white;
+  display: flex;
+}
+
+.task-remove {
+  margin-left: auto;
+}
+
+.task-edit {
+  margin-left: 2rem;
+  margin-right: 1rem;
 }
 
 .task-completed {
@@ -33,7 +47,7 @@ ul {
 }
 
 #to-do-add {
-  color: #aaa;
+  color: #444;
 }
 
 #to-do-clear {
