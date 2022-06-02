@@ -1,5 +1,6 @@
 // import _ from 'lodash';
 import './style.css';
+// import * from '../modules/clear.js';
 
 const toDoLlistDiv = document.querySelector('.to-do-list');
 const toDoListUl = document.createElement('ul');
@@ -22,9 +23,9 @@ toDoClear.innerHTML = 'Clear all completed';
 toDoClear.classList.add('task');
 toDoClear.id = 'to-do-clear';
 
-const toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
+let toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
 let myIndex;
-const completed = false;
+let completed = false;
 
 class ToDoListTasks {
   addTask = (description) => {
@@ -55,6 +56,26 @@ class ToDoListTasks {
     toDoTaskCompleted.type = 'checkbox';
     toDoTaskCompleted.id = myIndex;
     toDoTaskCompleted.classList.add('task-completed');
+
+    toDoTaskCompleted.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        for (let i = 0; i < toDoList.length; i += 1) {
+          if (toDoList[i].description === description) {
+          toDoList[i].completed = true;
+          }
+        }
+        localStorage.setItem('toDoList', JSON.stringify(toDoList));
+      }
+    });
+
+    toDoClear.addEventListener('click', (event) => {
+      toDoList = toDoList.filter(oneTask => oneTask.completed === false);
+      localStorage.setItem('toDoList', JSON.stringify(toDoList));
+    });
+
+
+
+
     const toDoTaskDescription = document.createElement('label');
     toDoTaskDescription.for = myIndex;
     toDoTaskDescription.innerHTML = description;
@@ -71,7 +92,7 @@ class ToDoListTasks {
     taskEdit.classList.add('task-edit');
     taskEdit.innerText = 'Edit';
 
-    taskRemove.onclick = function () {
+    taskRemove.onclick = function() {
       taskRemove.parentElement.remove();
       let theIndex;
       for (let i = 0; i < toDoList.length; i += 1) {
@@ -87,7 +108,7 @@ class ToDoListTasks {
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     };
 
-    taskEdit.onclick = function () {
+    taskEdit.onclick = function() {
       const editField = document.createElement('input');
       editField.type = 'text';
       editField.classList.add = 'edit-input';
@@ -97,6 +118,7 @@ class ToDoListTasks {
       toDoTaskDescription.style.display = 'none';
 
       editField.addEventListener('keypress', (event) => {
+
         if (event.key === 'Enter') {
           event.preventDefault();
           toDoList[0].description = editField.value;
@@ -104,8 +126,14 @@ class ToDoListTasks {
           toDoTaskDescription.innerHTML = `${editField.value}`;
           editField.style.display = 'none';
           toDoTaskDescription.style.display = 'flex';
+
         }
       });
+
+
+
+
+
     };
 
     toDoTask.appendChild(taskRemove);
@@ -114,6 +142,10 @@ class ToDoListTasks {
     toDoListUl.appendChild(toDoTask);
   }
 }
+
+
+
+
 
 const myTasks = new ToDoListTasks();
 
