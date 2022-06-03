@@ -87,19 +87,12 @@ class ToDoListTasks {
     });
 
     toDoClear.addEventListener('click', (event) => {
-      // console.log("hhhh");
-      //
-      // for (let i = 0; i < toDoList.length; i += 1) {
-      //   console.log("hhhh");
-      //
-      //   if (toDoList[i].completed === true) {
-      //     console.log("hhhh");
-      //     toDoList[i].remove();
-      //   }
-      // }
-      console.log("hhhh");
-      // toDoList = toDoList.filter((oneTask) => oneTask.completed === false);
-      console.log("hhhh");
+      for (let i = 0; i < toDoList.length; i += 1) {
+        if (toDoList[i].completed === true) {
+          toDoList[i].remove();
+        }
+      }
+      toDoList = toDoList.filter((oneTask) => oneTask.completed === false);
 
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     });
