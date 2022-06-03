@@ -87,6 +87,11 @@ class ToDoListTasks {
     });
 
     toDoClear.addEventListener('click', (event) => {
+      for (let i = 0; i < toDoList.length; i += 1) {
+        if (toDoTaskCompleted.checked === true) {
+          toDoTaskCompleted.parentElement.remove();
+        }
+      }
       toDoList = toDoList.filter((oneTask) => oneTask.completed === false);
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     });
@@ -119,11 +124,17 @@ class ToDoListTasks {
       editField.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
           event.preventDefault();
-          toDoList[0].description = editField.value;
-          localStorage.setItem('toDoList', JSON.stringify(toDoList));
-          toDoTaskDescription.innerHTML = `${editField.value}`;
           editField.style.display = 'none';
           toDoTaskDescription.style.display = 'flex';
+
+          for (let i = 0; i < toDoList.length; i += 1) {
+            if (toDoList[i].description === description) {
+              toDoList[i].description = editField.value;
+              toDoTaskDescription.innerHTML = `${editField.value}`;
+            }
+          }
+          localStorage.setItem('toDoList', JSON.stringify(toDoList));
+
         }
       });
     };
