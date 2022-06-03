@@ -1,4 +1,4 @@
-export * from './clear.js';
+export * from './module.js';
 const toDoLlistDiv = document.querySelector('.to-do-list');
 const toDoListUl = document.createElement('ul');
 const toDoTitle = document.createElement('li');
@@ -22,7 +22,7 @@ toDoClear.id = 'to-do-clear';
 
 let toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
 let myIndex;
-let completed = false;
+const completed = false;
 class ToDoListTasks {
   addTask = (description) => {
     myIndex = toDoList.length + 1;
@@ -90,7 +90,7 @@ class ToDoListTasks {
 
     function clearTheTask() {
       toDoClear.addEventListener('click', (event) => {
-        toDoList = toDoList.filter(oneTask => oneTask.completed === false);
+        toDoList = toDoList.filter((oneTask) => oneTask.completed === false);
         localStorage.setItem('toDoList', JSON.stringify(toDoList));
       });
     }
@@ -98,7 +98,7 @@ class ToDoListTasks {
     toDoTaskCompleted.addEventListener('change', checkTheTask());
     toDoClear.addEventListener('click', clearTheTask());
 
-    taskRemove.onclick = function() {
+    taskRemove.onclick = function () {
       taskRemove.parentElement.remove();
       let theIndex;
       for (let i = 0; i < toDoList.length; i += 1) {
@@ -114,7 +114,7 @@ class ToDoListTasks {
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     };
 
-    taskEdit.onclick = function() {
+    taskEdit.onclick = function () {
       const editField = document.createElement('input');
       editField.type = 'text';
       editField.classList.add = 'edit-input';
@@ -124,7 +124,6 @@ class ToDoListTasks {
       toDoTaskDescription.style.display = 'none';
 
       editField.addEventListener('keypress', (event) => {
-
         if (event.key === 'Enter') {
           event.preventDefault();
           toDoList[0].description = editField.value;
@@ -132,7 +131,6 @@ class ToDoListTasks {
           toDoTaskDescription.innerHTML = `${editField.value}`;
           editField.style.display = 'none';
           toDoTaskDescription.style.display = 'flex';
-
         }
       });
     };
@@ -158,7 +156,6 @@ toDoAdd.addEventListener('keypress', (event) => {
     toDoAdd.value = '';
   }
 });
-
 
 toDoLlistDiv.appendChild(toDoListUl);
 
